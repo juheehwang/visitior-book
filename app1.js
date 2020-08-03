@@ -7,7 +7,7 @@ const { request } = require('express');
 
 
 const app=express();
-
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 //connect to mongodb
 const dbURI='mongodb+srv://juheeh:8022@jhjavascript.88ln5.mongodb.net/nodeEX?retryWrites=true&w=majority'
@@ -35,16 +35,16 @@ app.get('/test2',(req,res) => {
 })
 
 app.post("/visitor",(req,res)=>{
-    
+     res.send(req.body.name);
     // const user = new Visitor(req.body)
 
-     user.save((err,userInfo)=>{
-         if(err) return res.json({sucess:false,err})
-         return res.status(200).json({
-             success:true
+    //  user.save((err,userInfo)=>{
+    //      if(err) return res.json({sucess:false,err})
+    //      return res.status(200).json({
+    //          success:true
 
-         })
+    //      })
          
-    })
+    // })
     // res.end(JSON.stringify(req.body));
 })
